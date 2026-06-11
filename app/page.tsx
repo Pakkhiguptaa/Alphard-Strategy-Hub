@@ -26,15 +26,22 @@ type MatrixRow = {
   person: string;
   committeeRole: string;
   businessPain: string;
+  fear: string;
   alphardRelevance: string;
   suggestedEntryPoint: string;
 };
 
-type OutreachStrategy = {
+type MessageExample = {
+  label: string;
+  text: string;
+};
+
+type CommittedPlay = {
+  eyebrow: string;
   title: string;
-  target?: string;
-  hook: string;
-  example?: string;
+  body: string;
+  sequence?: string;
+  messages?: MessageExample[];
   inPerson?: string;
 };
 
@@ -44,6 +51,8 @@ type Company = {
   headline: string;
   whatTheyDo: string;
   whyAlphardCares: string;
+  whyNow?: string[];
+  connectorRoutes?: string[];
   strategicAdvantage?: {
     title: string;
     body: string;
@@ -55,7 +64,7 @@ type Company = {
   matrix: MatrixRow[];
   messagingEntryPoint: string;
   firstMove: string;
-  outreachStrategies: OutreachStrategy[];
+  committedPlay: CommittedPlay;
 };
 
 const companies: Company[] = [
@@ -67,6 +76,14 @@ const companies: Company[] = [
       "DataSnipper is an audit automation platform that helps audit and finance teams extract, verify, cross-reference, and document audit evidence directly inside Excel and connected workflows.",
     whyAlphardCares:
       "DataSnipper is a scaled B2B SaaS company with enterprise audit and finance customers. As the customer base grows, strategic customer success and account management teams likely need better ways to identify expansion opportunities, standardise account planning, and surface whitespace across accounts.",
+    whyNow: [
+      "Raised a $100M Series B led by Index Ventures at a $1B valuation after doubling revenue and customer base in a year. A customer base growing faster than the post-sales team can manually cover is exactly the gap Alphard fills.",
+      "Publicly expanding from external audit into internal audit, tax, and forensic accounting, plus APAC and LatAm. Every new vertical multiplies whitespace inside existing accounts that nobody is systematically tracking.",
+    ],
+    connectorRoutes: [
+      "Insight Partners invested in DataSnipper in 2022 and is also Xelix's Series B lead. One investor network covers two of the three target accounts. Insight runs GTM and CS peer communities for its portfolio; any contact inside that network is a warm route into both companies.",
+      "Index Ventures led the Series B. Index's London platform team and portfolio events are a second-degree route to DataSnipper leadership.",
+    ],
     personas: [
       "Strategic Customer Success Manager",
       "VP Customer Success",
@@ -130,6 +147,8 @@ const companies: Company[] = [
         committeeRole: "Economic Buyer",
         businessPain:
           "Needs scalable CS execution, stronger expansion visibility, and better account growth discipline",
+        fear:
+          "Expansion targets rise after a $1B valuation round, but visibility into account growth is still anecdotal. The fear is reporting reactive, lagging expansion numbers to a board that just paid for growth.",
         alphardRelevance:
           "Alphard can help standardise expansion intelligence and account planning",
         suggestedEntryPoint:
@@ -140,6 +159,8 @@ const companies: Company[] = [
         committeeRole: "Economic Buyer",
         businessPain:
           "Needs revenue growth, expansion discipline, and stronger visibility into customer growth opportunities",
+        fear:
+          "Core external-audit market saturates while new verticals open. The fear is missing cross-sell into internal audit and tax inside accounts the company already owns.",
         alphardRelevance:
           "Alphard can connect customer success signals to expansion-ready account intelligence",
         suggestedEntryPoint:
@@ -150,6 +171,8 @@ const companies: Company[] = [
         committeeRole: "Champion / User",
         businessPain:
           "Needs faster ways to prepare account reviews, identify whitespace, and understand account context",
+        fear:
+          "The book grows faster than prep time. The fear is being judged on renewals and churn she had no way to see coming.",
         alphardRelevance:
           "Alphard can reduce manual prep and surface expansion signals",
         suggestedEntryPoint:
@@ -160,6 +183,8 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Needs consistency across CS operations, team workflows, and scalable customer success processes",
+        fear:
+          "CS process breaking down as headcount scales, with every CSM running accounts their own way.",
         alphardRelevance:
           "Alphard can become a process layer for account planning and expansion workflows",
         suggestedEntryPoint:
@@ -170,6 +195,8 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Needs efficient ways to manage strategic accounts, renewals, customer health, and expansion conversations",
+        fear:
+          "Strategic accounts getting reactive service because account context lives in scattered notes.",
         alphardRelevance:
           "Alphard can reduce manual account preparation and surface expansion signals for strategic accounts",
         suggestedEntryPoint:
@@ -180,6 +207,8 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Needs clearer account context before renewals, health reviews, and expansion conversations",
+        fear:
+          "Walking into renewal conversations with less context than the customer has.",
         alphardRelevance:
           "Alphard can help strategic CSMs prioritise account actions and prepare customer conversations faster",
         suggestedEntryPoint:
@@ -190,22 +219,19 @@ const companies: Company[] = [
       "Start with the champion. Ask how strategic account reviews are prepared, how expansion opportunities are found, and what customer signals are hard to track today. Do not claim the team has a problem. Convert discovery into a leadership hypothesis: As DataSnipper scales, expansion identification may still depend on CRM hygiene, manual account reviews, and individual CSM knowledge. Is that accurate?",
     firstMove:
       "Connect with Channalyn Tek first. Build credibility through a short, practical message about strategic account planning in fast-scaling SaaS companies. Ask for 15 minutes to understand how CS teams prepare for renewal and expansion conversations. Use that insight to craft a sharper, non-generic outreach to Jamie Ryan.",
-    outreachStrategies: [
-      {
-        title: "Attack 1: Messaging",
-        target: "Channalyn Tek (Champion / User), plus Dirk Van Portfliet, Taylor Holmes, and Lauren Scott (Influencers)",
-        hook: "Send discovery-led outreach to the champion and multiple strategic-account influencers so there is more than one route into the account. Keep the message focussed on account planning, renewals, customer health, and expansion conversations.",
-        example:
-          "Hi Channalyn, I have been following DataSnipper's work in audit automation and how fast-scaling SaaS teams manage strategic customer accounts. I am curious how your team prepares for account reviews, renewals, and expansion conversations as the customer base grows. Would you be open to a short conversation about how that works today?",
-      },
-      {
-        title: "Attack 2: Events",
-        target: "Champion and multiple influencers through London industry events plus London partner events",
-        hook: "Use London-only event routes. Prioritise DataSnipper-hosted London or UK events if confirmed, then target London industry events such as DigiGov Expo, AI in Finance Summit, and Big Data LDN. Also use DataSnipper webinars as a digital event path, because webinar attendees can reveal other audit, finance, data, and public sector ICPs that Alphard could approach later.",
-        inPerson:
-          "Attend London events with a discovery goal around strategic account planning, renewals, customer health, expansion readiness, and CS workflow consistency. For webinars, track speakers, partner participants, and attendee themes to identify similar ICP accounts. The objective is to create warm context with Channalyn Tek and at least one influencer before bringing a sharper hypothesis to Jamie Ryan or Carrie Bosworth.",
-      },
-    ],
+    committedPlay: {
+      eyebrow: "The Play",
+      title: "Messaging attack",
+      body: "This account runs on cold outreach. The pain is visible, the champion path is clear, and there is no confirmed DataSnipper-hosted London motion worth waiting for. The events attack is dropped as a primary path: DigiGov Expo is a public sector audience and wrong for this account. Big Data LDN stays as an opportunistic add-on only if outreach has already opened a thread.",
+      sequence:
+        "Channalyn first, Dirk as the parallel influencer, escalate to Jamie Ryan only after one of them confirms how account prep is actually done today.",
+      messages: [
+        {
+          label: "Message to Channalyn",
+          text: "Hi Channalyn, since the Series B, DataSnipper has been pushing into internal audit and tax, which usually means CS teams suddenly own whitespace nobody mapped. Curious how your team spots expansion signals across accounts today: structured process or CSM judgment? Happy to swap notes either way.",
+        },
+      ],
+    },
   },
   {
     id: "xelix",
@@ -216,6 +242,15 @@ const companies: Company[] = [
       "Xelix is an AI-powered accounts payable control and finance operations platform. It helps finance teams detect duplicate payments, prevent overpayments, identify supplier risks, improve reconciliations, and strengthen AP controls.",
     whyAlphardCares:
       "Xelix is a B2B SaaS company selling to enterprise finance teams. Its post-sales team likely manages complex customer accounts, renewals, upsells, and value realisation. Alphard could help its account and customer success teams identify expansion signals, prioritise accounts, and make account planning more systematic.",
+    whyNow: [
+      "Closed a $160M Series B led by Insight Partners in July 2025. Insight installs revenue discipline in its portfolio; NRR and expansion reporting will get board scrutiny within two quarters of a round this size.",
+      "Xelix's own funding announcement credits its growth to client support and value realisation. Post-sales is publicly named as the growth engine, which means the team carrying it needs leverage.",
+      "Serves 130+ enterprise clients including AstraZeneca, BAT, GSK, and Virgin Atlantic. Enterprise accounts of that size are exactly where expansion signals hide in QBR notes and email threads.",
+    ],
+    connectorRoutes: [
+      "Insight Partners again, the same investor as DataSnipper. Ryan Hinkle and Alessandro Luciano of Insight joined the Xelix board with the round. One warm contact in Insight's portfolio network opens both accounts.",
+      "Passion Capital and LocalGlobe are returning investors. LocalGlobe's Phoenix Court community runs regular London operator events, a realistic in-person route to Xelix's post-sales leadership.",
+    ],
     personas: [
       "Account Manager",
       "Senior Account Manager",
@@ -264,6 +299,8 @@ const companies: Company[] = [
         committeeRole: "Economic Buyer",
         businessPain:
           "Needs scalable account management, renewal discipline, upsell visibility, and value realisation",
+        fear:
+          "Post-raise growth targets arrive before the systems to hit them. The fear is renewals and upsells managed in spreadsheets failing in front of a new board.",
         alphardRelevance:
           "Alphard can help account teams identify growth opportunities and prioritise accounts",
         suggestedEntryPoint:
@@ -274,6 +311,8 @@ const companies: Company[] = [
         committeeRole: "Champion / User",
         businessPain:
           "Needs practical visibility into customer accounts, feedback, account health, and expansion timing",
+        fear:
+          "Account knowledge lives in her head and her notes. The fear is being unable to scale herself as the client list grows.",
         alphardRelevance:
           "Alphard can reduce manual account research and help surface customer growth signals from customer-facing work",
         suggestedEntryPoint:
@@ -284,6 +323,8 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Increase expansion revenue by improving account prioritisation and surfacing growth opportunities across the customer base.",
+        fear:
+          "Publicly champions AI transformation. The fear is the AI agenda staying theoretical, with no shipped internal win to point to.",
         alphardRelevance:
           "Sam actively talks about AI adoption for strategy and AI transformation within the company. Alphard can align with that agenda by giving sales and post-sales teams better account intelligence, clearer expansion signals, and a practical AI layer for account prioritisation.",
         suggestedEntryPoint:
@@ -294,6 +335,8 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Needs account management workflows that support adoption, prioritisation, and expansion conversations",
+        fear:
+          "Every account manager preparing for renewals differently, with quality depending on who owns the account.",
         alphardRelevance:
           "Alphard can help account managers prioritise accounts and prepare more consistently",
         suggestedEntryPoint:
@@ -304,15 +347,23 @@ const companies: Company[] = [
       "Start with Hannah Lansdell. Ask how customer accounts are prepared, how feedback is captured, which signals matter before a renewal, and how customer feedback is turned into growth opportunities. Then approach Paris with a hypothesis: As Xelix scales its enterprise customer base, account growth may still rely on scattered customer notes, CRM discipline, and individual account manager judgment. Alphard could help standardise that intelligence.",
     firstMove:
       "Connect with Hannah Lansdell first. Use a short discovery-led message around customer feedback loops, account planning, and customer expansion in finance SaaS. After validating the workflow, approach Paris Haig with a concise business case around expansion visibility, renewal preparation, and account team productivity.",
-    outreachStrategies: [
-      {
-        title: "Attack 1: Messaging",
-        target: "Hannah Lansdell (Champion / User), plus Sam Dhingra and Sarah Drake (Influencers)",
-        hook: "Send outreach to the champion and multiple influencers with different angles. Start with Hannah to validate how account planning, customer feedback, renewal prep, and expansion signals are handled today. Use Sam for the AI transformation and expansion revenue angle, and Sarah for account management workflow validation.",
-        example:
-          "Hi Hannah, I have been thinking about how customer-facing teams at finance SaaS companies turn feedback and value stories into expansion signals. Curious how your team tracks those signals across accounts as Xelix scales. Would you be open to a short conversation about how that works today?",
-      },
-    ],
+    committedPlay: {
+      eyebrow: "The Play",
+      title: "Messaging attack, funding-timed",
+      body: "Run cold messaging as the only path. Xelix is a focussed, smaller post-sales org with no major event motion of its own, and the Series B gives the outreach a timestamp. Events are dropped entirely for this account.",
+      sequence:
+        "Hannah for workflow discovery, Sam in parallel on the AI angle, Paris only after pain is confirmed.",
+      messages: [
+        {
+          label: "Message to Hannah",
+          text: "Hi Hannah, Xelix's Series B announcement credited growth to client support and value realisation, which is rare to see named so directly. With 130+ enterprise accounts, I am curious whether expansion signals get surfaced systematically or whether it still runs on account-manager memory. Would value 15 minutes on how that works today.",
+        },
+        {
+          label: "Message to Sam",
+          text: "Hi Sam, your posts on AI transformation at Xelix stood out because most companies talk adoption without naming workflows. One workflow I keep seeing: turning scattered account context into expansion signals for post-sales teams. Is that on your internal AI roadmap, or is the focus elsewhere right now?",
+        },
+      ],
+    },
   },
   {
     id: "paddle",
@@ -323,6 +374,15 @@ const companies: Company[] = [
       "Paddle is a London-headquartered merchant-of-record platform serving 10,000+ software companies. Its customer success and revenue teams manage a large customer base where expansion signals, churn risk, and account growth opportunities need to be surfaced systematically.",
     whyAlphardCares:
       "Paddle fits Alphard's ICP with roughly 300 employees, a London base, and a large B2B SaaS customer portfolio. Alphard can help Paddle's customer success and revenue teams uncover expansion signals, prevent churn, and make account planning less dependent on manual notes and individual judgment.",
+    whyNow: [
+      "Acquired ProfitWell, a retention and pricing analytics company. Leadership has already spent real money on the belief that retention and expansion should be data-driven. Alphard is the operational layer for the same belief.",
+      "Raised a $200M Series D led by KKR at a $1.4B valuation. Growth investors at that stage manage to NRR. A 10,000+ customer base means expansion has to be systematic or it does not happen.",
+      "Runs B2Coast, an invite-only community event. A company that invests in community is relationship-led, which confirms the event path.",
+    ],
+    connectorRoutes: [
+      "The ProfitWell ecosystem. ProfitWell's content and community audience is full of SaaS retention and pricing operators. Engaging there builds visible context before any direct message.",
+      "Paddle's investor bench: KKR, FTV Capital, Notion Capital, 83North, Kindred. Notion Capital in particular runs London SaaS operator events where Paddle's revenue leadership shows up. A second route alongside B2Coast.",
+    ],
     strategicAdvantage: {
       title: "Two Strategic Advantages of Choosing Paddle",
       body: "Paddle is useful in two ways: first as a direct target account for Alphard, and second as a gateway into a broader SaaS founder, revenue, customer success, and AI transformation ecosystem.",
@@ -386,6 +446,8 @@ const companies: Company[] = [
         committeeRole: "Economic Buyer",
         businessPain:
           "Needs measurable expansion revenue impact, stronger NRR, and scalable account growth across a large software customer base",
+        fear:
+          "In a business built on customers' growth, expansion should be automatic. The fear is being unable to attribute NRR movement to anything his team actually did.",
         alphardRelevance:
           "Alphard can quantify and surface expansion opportunities that revenue teams can act on before they become obvious in the CRM",
         suggestedEntryPoint:
@@ -396,8 +458,10 @@ const companies: Company[] = [
         committeeRole: "Champion / User",
         businessPain:
           "Needs better visibility into renewals, account health, expansion readiness, and manual account review workflows",
+        fear:
+          "Renewals across thousands of accounts run on manual triage. The fear is the important accounts and the loud accounts being treated as the same thing.",
         alphardRelevance:
-          "Alphard can turn scattered customer interactions and account notes into structured expansion intelligence for CS teams",
+          "Alphard can turn scattered customer interactions into structured expansion signals for CS teams",
         suggestedEntryPoint:
           "Best first relationship to build at B2Coast or through discovery-led outreach",
       },
@@ -406,6 +470,8 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Needs innovation programmes that connect AI experimentation to measurable business impact",
+        fear:
+          "Innovation programmes that never touch the P&L.",
         alphardRelevance:
           "Alphard can be framed as a practical AI layer for customer growth, NRR, and CS productivity",
         suggestedEntryPoint:
@@ -416,8 +482,10 @@ const companies: Company[] = [
         committeeRole: "AI Transformation Influencer",
         businessPain:
           "Needs practical AI adoption use cases that help internal teams work faster and make better customer decisions",
+        fear:
+          "AI enablement being seen internally as theatre, demos and policies, with no workflow that changed how a team works.",
         alphardRelevance:
-          "Alphard can turn scattered customer interactions into structured signals for CS and revenue teams, aligning with Paddle's AI enablement agenda",
+          "Alphard gives the AI enablement agenda a shipped workflow: expansion signals surfaced for CS and revenue teams, not another pilot.",
         suggestedEntryPoint:
           "Reach out in parallel before B2Coast and ask whether AI-enabled expansion intelligence fits Paddle's internal AI strategy",
       },
@@ -426,8 +494,10 @@ const companies: Company[] = [
         committeeRole: "Influencer",
         businessPain:
           "Needs practical ways to manage retention, expansion, strategic growth, and account-level customer intelligence",
+        fear:
+          "Strategic accounts getting the same generic motion as the long tail.",
         alphardRelevance:
-          "Alphard can turn scattered customer interactions into structured expansion signals for CS and revenue teams",
+          "Alphard gives strategic CSMs a prioritised view of account actions instead of a flat list of customers.",
         suggestedEntryPoint:
           "Reach out in parallel before B2Coast and ask how Paddle surfaces expansion opportunities across strategic SaaS accounts",
       },
@@ -436,26 +506,25 @@ const companies: Company[] = [
       "Start with Kirsty Jarvis as the champion, Ailbhe Owens as the AI-transformation influencer, and Elena Morell as the CS expansion influencer. Ask how Paddle's CS team surfaces expansion signals, manages renewals, and turns customer interactions into account intelligence. In parallel, ask Ailbhe how Paddle evaluates internal AI use cases and ask Elena how strategic customer teams identify retention risk, expansion opportunities, and growth signals across SaaS accounts.",
     firstMove:
       "Use B2Coast as the warm path. Attend as someone researching AI-driven customer-growth strategies, speak with Kirsty about expansion signals and renewals, then follow up with a hypothesis that Paddle may still rely on manual account plans and CRM notes to spot upsell opportunities. In parallel, build AI alignment with Ailbhe Owens and CS expansion alignment with Elena Morell before asking for a joint path into Rich Mason.",
-    outreachStrategies: [
-      {
-        title: "Attack 1: Event-led warm path",
-        target: "Kirsty Jarvis first, then Rich Mason",
-        hook: "Register for B2Coast, Paddle's private invite-only event, and position the conversation around AI-driven customer-growth strategy. Use sessions and networking dinners to ask Kirsty how Paddle's CS team surfaces expansion signals and manages renewals.",
-        example:
-          "Hi Kirsty, I am looking at how London SaaS companies turn customer interactions into expansion intelligence. If you are at B2Coast, I would be curious to ask how Paddle's CS team surfaces expansion signals and manages renewal prep across a large customer base.",
-        inPerson:
-          "After the event, follow up with Kirsty referencing the conversation. Share the hypothesis that Paddle's CS team may still rely on manual account plans and CRM notes to spot upsell opportunities, then ask for an introduction to Rich Mason to discuss revenue impact.",
-      },
-      {
-        title: "Attack 2: AI attack",
-        target: "Ailbhe Owens first, then Andrew Davies and Rich Mason",
-        hook: "Send a concise note to Ailbhe Owens ahead of B2Coast. Lead with AI enablement, internal AI strategy, and how Alphard could turn scattered customer interactions into structured expansion intelligence. Use Ailbhe's validation to reach Andrew Davies as the innovation sponsor, then Rich Mason as the buyer.",
-        example:
-          "Hi Ailbhe, I am interested in how AI enablement teams turn internal AI strategy into practical workflows for CS and revenue teams. Paddle's AI enablement work caught my attention. Will you be at B2Coast? I would value a short conversation on how AI could help surface expansion signals from scattered customer interactions.",
-        inPerson:
-          "Use Ailbhe's AI validation as the route to Andrew Davies. Once the AI and innovation fit is clear, ask Ailbhe or Andrew for a joint meeting with Rich Mason and Kirsty Jarvis to review a proof of concept.",
-      },
-    ],
+    committedPlay: {
+      eyebrow: "The Play",
+      title: "Event-led, with one parallel thread",
+      body: "B2Coast is the primary path and the reason this account was picked. The AI attack is not a separate play; it folds in as a single pre-event note to Ailbhe Owens so the event conversation lands warm. Everything else waits for the event.",
+      sequence:
+        "Register for B2Coast, send Ailbhe the pre-event note, meet Kirsty at the event with a discovery goal, follow up within 48 hours, then ask for the Rich Mason conversation with a written hypothesis.",
+      messages: [
+        {
+          label: "Message to Kirsty",
+          text: "Hi Kirsty, I am looking at how London SaaS companies turn customer interactions into expansion intelligence. If you are at B2Coast, I would be curious to ask how Paddle's CS team surfaces expansion signals and manages renewal prep across a large customer base.",
+        },
+        {
+          label: "Message to Ailbhe",
+          text: "Hi Ailbhe, Paddle buying ProfitWell told me leadership already believes retention should run on data, and your AI enablement work seems like the internal version of the same idea. I will be at B2Coast and would value 10 minutes on whether AI-surfaced expansion signals fit what you are building internally, or whether the priority sits elsewhere.",
+        },
+      ],
+      inPerson:
+        "After the event, follow up with Kirsty referencing the conversation. Share the hypothesis that Paddle's CS team may still rely on manual account plans and CRM notes to spot upsell opportunities, then ask for an introduction to Rich Mason to discuss revenue impact.",
+    },
   },
 ];
 
@@ -574,6 +643,112 @@ function SlidePage({
   );
 }
 
+function StrategyBlock({
+  eyebrow,
+  title,
+  body,
+  bullets,
+  children,
+  className,
+}: {
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  bullets?: string[];
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]",
+        className,
+      )}
+    >
+      {eyebrow ? (
+        <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#4169e1]">
+          {eyebrow}
+        </p>
+      ) : null}
+      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#10203d]">
+        {title}
+      </h3>
+      {body ? (
+        <p className="mt-4 text-sm leading-6 text-[#4f607a]">{body}</p>
+      ) : null}
+      {bullets ? (
+        <ul className="mt-5 space-y-3 text-sm leading-6 text-[#4f607a]">
+          {bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-3">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4169e1]" />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {children}
+    </div>
+  );
+}
+
+function NumberedSteps({
+  steps,
+  columns = "md:grid-cols-4",
+}: {
+  steps: [string, string, string][];
+  columns?: string;
+}) {
+  return (
+    <div className={cn("mt-6 grid gap-5", columns)}>
+      {steps.map(([step, title, body]) => (
+        <div key={step} className="border-l border-blue-100 pl-4">
+          <p className="text-sm font-semibold text-[#4169e1]">{step}</p>
+          <h3 className="mt-3 text-lg font-semibold text-[#10203d]">
+            {title}
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-[#4f607a]">{body}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CompactCommitteeList({ company }: { company: Company }) {
+  return (
+    <div className="mb-8">
+      <div className="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#74829a]">
+            Buying Committee
+          </p>
+          <h3 className="mt-2 text-3xl font-semibold tracking-tight text-[#10203d]">
+            Decision makers
+          </h3>
+        </div>
+        <p className="max-w-xl text-sm leading-6 text-[#4f607a]">
+          Compact committee view only. The matrix below carries the full pain,
+          relevance, fear, and entry-point logic.
+        </p>
+      </div>
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+        {company.people.map((person) => (
+          <div
+            key={person.name}
+            className="rounded-2xl border border-blue-100 bg-white/90 p-4 shadow-[0_14px_34px_rgba(56,93,155,0.10)]"
+          >
+            <p className="text-lg font-semibold text-[#10203d]">
+              {person.name}
+            </p>
+            <p className="mt-1 text-sm leading-6 text-[#4f607a]">
+              {person.role}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function MatrixTable({ company }: { company: Company }) {
   const influencerCount = company.matrix.filter((row) =>
     row.committeeRole.toLowerCase().includes("influencer"),
@@ -624,6 +799,15 @@ function MatrixTable({ company }: { company: Company }) {
                 >
                   {row.committeeRole}
                 </p>
+                {person?.image ? (
+                  <div className="mt-5 overflow-hidden rounded-2xl border border-blue-100 bg-[#eef7ff]">
+                    <img
+                      src={person.image}
+                      alt={`${person.name} profile`}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
+                ) : null}
                 {person ? (
                   <div className="mt-5">
                     <LinkedInButton href={person.linkedin} />
@@ -644,7 +828,7 @@ function MatrixTable({ company }: { company: Company }) {
                     The fear
                   </p>
                   <p className="mt-4 text-base italic leading-7 text-[#4f607a]">
-                    {row.suggestedEntryPoint}
+                    {row.fear}
                   </p>
                 </div>
 
@@ -656,6 +840,15 @@ function MatrixTable({ company }: { company: Company }) {
                     {row.alphardRelevance}
                   </p>
                 </div>
+
+                <div className="mt-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#74829a]">
+                    Entry point
+                  </p>
+                  <p className="mt-4 text-sm leading-6 text-[#4f607a]">
+                    {row.suggestedEntryPoint}
+                  </p>
+                </div>
               </div>
             );
           })()
@@ -665,182 +858,61 @@ function MatrixTable({ company }: { company: Company }) {
   );
 }
 
-function PersonaBoard({
-  company,
-  person,
-  index,
-}: {
-  company: Company;
-  person: Person;
-  index: number;
-}) {
-  const matrixRow = company.matrix.find(
-    (row) => row.person === person.name || person.name.startsWith(row.person),
-  );
-  const label = person.name.split(",")[0];
-
-  return (
-    <div className="grid gap-5 lg:grid-cols-[0.9fr_1.4fr]">
-      <div className="overflow-hidden rounded-2xl border border-blue-100 bg-white/90 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
-        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
-          {person.image ? (
-            <img
-              src={person.image}
-              alt={`${person.name} profile`}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          ) : (
-            <>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(124,58,237,0.28),transparent_34%),radial-gradient(circle_at_70%_80%,rgba(37,99,235,0.22),transparent_32%)]" />
-              <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-4xl font-semibold text-white">
-                {label
-                  .split(" ")
-                  .map((part) => part[0])
-                  .join("")
-                  .slice(0, 2)}
-              </div>
-              <div className="absolute left-6 top-6 rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">
-                Photo placeholder
-              </div>
-            </>
-          )}
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-6">
-            <h3 className="text-3xl font-semibold tracking-tight text-white">
-              {person.name}
-            </h3>
-            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
-              {person.committeeRole}
-            </p>
-          </div>
-        </div>
-        <div className="grid gap-5 border-t border-blue-100 p-6 md:grid-cols-2">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#74829a]">
-              Company
-            </p>
-            <p className="mt-2 text-lg font-semibold text-[#10203d]">{company.name}</p>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#74829a]">
-              Role
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[#4f607a]">{person.role}</p>
-          </div>
-          <div className="md:col-span-2">
-            <LinkedInButton href={person.linkedin} />
-          </div>
-        </div>
-      </div>
-
-      <div className="grid gap-5">
-        <div className="rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[#74829a]">
-            Committee signal {String(index + 1).padStart(2, "0")}
-          </p>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            <div>
-              <h4 className="text-lg font-semibold text-[#10203d]">
-                Committee role
-              </h4>
-              <p className="mt-3 text-sm leading-6 text-[#4f607a]">
-                {matrixRow?.committeeRole ?? person.committeeRole}
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold text-[#10203d]">
-                Business pain
-              </h4>
-              <p className="mt-3 text-sm leading-6 text-[#4f607a]">
-                {matrixRow?.businessPain}
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold text-[#10203d]">
-                Alphard relevance
-              </h4>
-              <p className="mt-3 text-sm leading-6 text-[#4f607a]">
-                {matrixRow?.alphardRelevance}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-2">
-          <div className="rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[#74829a]">
-              Why this person matters
-            </p>
-            <p className="mt-6 text-base leading-7 text-[#4f607a]">
-              {person.why}
-            </p>
-          </div>
-          <div className="rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[#74829a]">
-              Suggested entry point
-            </p>
-            <p className="mt-6 text-base leading-7 text-[#4f607a]">
-              {matrixRow?.suggestedEntryPoint}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function OutreachStrategies({ strategies }: { strategies: OutreachStrategy[] }) {
+function CommittedPlaySection({ play }: { play: CommittedPlay }) {
   return (
     <div>
       <div className="mb-4">
         <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#74829a]">
-          Two Attack Paths
+          {play.eyebrow}
         </p>
         <h3 className="mt-2 text-3xl font-semibold tracking-tight text-[#10203d]">
-          Messaging attack and events attack
+          {play.title}
         </h3>
       </div>
-      <div className="grid gap-5 lg:grid-cols-2">
-        {strategies.map((strategy) => (
+      <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
+        <div className="rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4169e1]">
+            Committed route
+          </p>
+          <p className="mt-5 text-sm leading-6 text-[#4f607a]">
+            {play.body}
+          </p>
+          {play.sequence ? (
+            <>
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#74829a]">
+                Sequence
+              </p>
+              <p className="mt-3 text-sm leading-6 text-[#4f607a]">
+                {play.sequence}
+              </p>
+            </>
+          ) : null}
+          {play.inPerson ? (
+            <div className="mt-5 rounded-2xl border border-[#4169e1]/20 bg-blue-50 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4169e1]">
+                In-person motion
+              </p>
+              <p className="mt-3 text-sm leading-6 text-[#4f607a]">
+                {play.inPerson}
+              </p>
+            </div>
+          ) : null}
+        </div>
+        <div className="grid gap-5">
+          {play.messages?.map((message) => (
           <div
-            key={strategy.title}
+            key={message.label}
             className="rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4169e1]">
-              {strategy.title}
+              {message.label}
             </p>
-            {strategy.target ? (
-              <h4 className="mt-5 text-xl font-semibold text-[#10203d]">
-                Target: {strategy.target}
-              </h4>
-            ) : null}
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#74829a]">
-              Hook
+            <p className="mt-5 text-sm italic leading-6 text-[#4f607a]">
+              {message.text}
             </p>
-            <p className="mt-5 text-sm leading-6 text-[#4f607a]">
-              {strategy.hook}
-            </p>
-            {strategy.example ? (
-              <div className="mt-5 rounded-2xl border border-blue-100 bg-[#eef7ff] p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#74829a]">
-                  Example message
-                </p>
-                <p className="mt-3 text-sm italic leading-6 text-[#4f607a]">
-                  {strategy.example}
-                </p>
-              </div>
-            ) : null}
-            {strategy.inPerson ? (
-              <div className="mt-5 rounded-2xl border border-[#4169e1]/20 bg-blue-50 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4169e1]">
-                  In-person motion
-                </p>
-                <p className="mt-3 text-sm leading-6 text-[#4f607a]">
-                  {strategy.inPerson}
-                </p>
-              </div>
-            ) : null}
           </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -853,9 +925,6 @@ function CompanyStrategyPage({
   company: Company;
   number: string;
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activePerson = company.people[activeIndex];
-
   return (
     <SlidePage id={company.id} className="py-20">
       <SectionHeading
@@ -883,6 +952,16 @@ function CompanyStrategyPage({
           </p>
         </div>
       </div>
+
+      {company.whyNow ? (
+        <div className="mb-8">
+          <StrategyBlock
+            eyebrow="Timing"
+            title="Why now"
+            bullets={company.whyNow}
+          />
+        </div>
+      ) : null}
 
       {company.strategicAdvantage ? (
         <div className="mb-8 rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-[#eaf3ff] p-6 shadow-[0_24px_70px_rgba(56,93,155,0.14)]">
@@ -922,43 +1001,24 @@ function CompanyStrategyPage({
         </div>
       ) : null}
 
-      <div className="mb-8">
-        <div className="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#74829a]">
-              Buying Committee
-            </p>
-            <h3 className="mt-2 text-3xl font-semibold tracking-tight text-[#10203d]">
-              Decision makers
-            </h3>
-          </div>
-          <div className="flex flex-wrap gap-2 rounded-2xl border border-blue-100 bg-white/80 p-2 shadow-sm">
-            {company.people.map((person, index) => (
-              <button
-                key={person.name}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  "rounded-xl px-5 py-3 text-sm font-semibold transition",
-                  activeIndex === index
-                    ? "bg-[#4169e1] text-white shadow-[0_10px_24px_rgba(65,105,225,0.25)]"
-                    : "text-[#557092] hover:bg-blue-50 hover:text-[#10203d]",
-                )}
-              >
-                {person.name.split(",")[0]}
-              </button>
-            ))}
-          </div>
-        </div>
-        <PersonaBoard company={company} person={activePerson} index={activeIndex} />
-      </div>
+      <CompactCommitteeList company={company} />
 
       <div className="mb-8">
         <MatrixTable company={company} />
       </div>
 
+      {company.connectorRoutes ? (
+        <div className="mb-8">
+          <StrategyBlock
+            eyebrow="Connector Routes"
+            title="Connector routes"
+            bullets={company.connectorRoutes}
+          />
+        </div>
+      ) : null}
+
       <div className="mt-8">
-        <OutreachStrategies strategies={company.outreachStrategies} />
+        <CommittedPlaySection play={company.committedPlay} />
       </div>
     </SlidePage>
   );
@@ -1113,24 +1173,63 @@ export default function Home() {
               body="Break into three post-sales SaaS teams by validating expansion workflow pain with credible champions and influencers, while building parallel buyer access through London industry events."
             />
 
+            <StrategyBlock
+              eyebrow="How the ICP was refined"
+              title="How the ICP was refined"
+              body="DataSnipper and Xelix share a pattern: B2B SaaS, roughly 100 to 600 employees, a large enterprise customer base, a named post-sales leadership layer, and a recent growth event that makes expansion a board-level topic. That pattern became the filter for the third account."
+            >
+              <NumberedSteps
+                columns="md:grid-cols-5"
+                steps={[
+                  ["01", "B2B SaaS", "100 to 600 employees."],
+                  ["02", "Large customer portfolio", "Expansion signals outnumber the team's capacity to spot them."],
+                  ["03", "Named CS or AM org", "Dedicated leadership proves the budget line exists."],
+                  ["04", "Recent forcing event", "Funding round, new vertical push, or NRR pressure."],
+                  ["05", "London or EU base", "Warm event routes are realistic."],
+                ]}
+              />
+              <div className="mt-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#74829a]">
+                  Shortlist considered
+                </p>
+                <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                  {[
+                    ["Attest", "Rejected", "Fits the size band but the strategic CS layer is too thin to need tooling yet."],
+                    ["Synthesia", "Rejected", "Right size, but heavily product-led with a self-serve motion. Expansion is usage-driven, not account-managed."],
+                    ["Beamery", "Rejected", "Fits on paper, but recent restructuring makes new tooling budget unlikely."],
+                    ["Paddle", "Selected", "Around 300 employees, London HQ, 10,000+ software customers, an AI enablement function, and its own community event (B2Coast) that doubles as a gateway to other ICP accounts."],
+                  ].map(([company, status, reason]) => (
+                    <div
+                      key={company}
+                      className="rounded-2xl border border-blue-100 bg-[#eef7ff] p-5"
+                    >
+                      <p className="text-lg font-semibold text-[#10203d]">
+                        {company}
+                      </p>
+                      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#4169e1]">
+                        {status}
+                      </p>
+                      <p className="mt-4 text-sm leading-6 text-[#4f607a]">
+                        {reason}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </StrategyBlock>
+
             <div className="mt-5 rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
               <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#74829a]">
                 Attack Sequence
               </p>
-              <div className="mt-6 grid gap-5 md:grid-cols-4">
-                {[
+              <NumberedSteps
+                steps={[
                   ["01", "Champion and influencer discovery", "Ask champions and influencers how account reviews, renewal prep, and expansion signals are handled today."],
                   ["02", "Pain validation", "Look for manual research, scattered notes, CRM hygiene gaps, and inconsistent account planning."],
                   ["03", "Buyer hypothesis", "Convert the validated workflow into a concise business case for CS or account leadership."],
                   ["04", "Expansion wedge", "Position Alphard around expansion intelligence, account prioritisation, and repeatable post-sales execution."],
-                ].map(([step, title, body]) => (
-                  <div key={step} className="border-l border-blue-100 pl-4">
-                    <p className="text-sm font-semibold text-[#4169e1]">{step}</p>
-                    <h3 className="mt-3 text-lg font-semibold text-[#10203d]">{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-[#4f607a]">{body}</p>
-                  </div>
-                ))}
-              </div>
+                ]}
+              />
             </div>
 
             <div className="mt-5 rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-[#eaf3ff] p-6 shadow-[0_20px_60px_rgba(56,93,155,0.12)]">
@@ -1222,16 +1321,63 @@ export default function Home() {
               <WhiteCard>
                 <div className="rounded-xl border border-blue-100 bg-[#eef7ff] p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#74829a]">
-                    Operating rule
+                    The Calls
                   </p>
-                  <p className="mt-5 text-2xl font-semibold leading-tight text-[#10203d]">
-                    Use cold messaging when the pain is obvious. Use events when the company is relationship-led.
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-[#4f607a]">
-                    Either route should end in the same place: a validated workflow insight, a warmer buyer conversation, and a clearer case for Alphard.
+                  <div className="mt-5 space-y-4 text-sm leading-6 text-[#4f607a]">
+                    <p>
+                      <span className="font-semibold text-[#10203d]">DataSnipper:</span>{" "}
+                      messaging attack. Champion path is clear, no credible event route, the Series B and vertical expansion give the message a reason to exist today. Dropped: the London event list.
+                    </p>
+                    <p>
+                      <span className="font-semibold text-[#10203d]">Xelix:</span>{" "}
+                      messaging attack, timed to the Series B. Small post-sales org, visible pain, investor pressure incoming. Dropped: events entirely.
+                    </p>
+                    <p>
+                      <span className="font-semibold text-[#10203d]">Paddle:</span>{" "}
+                      event-led through B2Coast, with one pre-event note to the AI enablement lead. Dropped: cold outreach to the CRO before the event.
+                    </p>
+                  </div>
+                  <p className="mt-5 text-base font-semibold leading-7 text-[#10203d]">
+                    One account leads with events, two lead with messaging. Both routes end the same way: a validated workflow insight that earns the buyer conversation.
                   </p>
                 </div>
               </WhiteCard>
+            </div>
+            <div className="mt-4">
+              <StrategyBlock eyebrow="Sprint Plan" title="14-day run plan">
+                <NumberedSteps
+                  columns="md:grid-cols-2 xl:grid-cols-3"
+                  steps={[
+                    ["Days 1 to 2", "Verify", "Confirm titles, check open CS and AM roles at all three companies, pull the most recent relevant post from each champion and influencer, map mutual connections and the Insight Partners route. Kill any contact whose role changed."],
+                    ["Days 2 to 3", "Warm the ground", "Connection requests with no pitch. Follow and engage with one piece of content per champion. Register for B2Coast."],
+                    ["Days 3 to 5", "Champion first touch", "Send Channalyn (DataSnipper), Hannah (Xelix), and the Ailbhe pre-event note (Paddle). Three messages, each carrying one verified trigger."],
+                    ["Days 5 to 7", "One influencer per account", "Dirk at DataSnipper, Sam at Xelix. Different angle from the champion message, never a copy."],
+                    ["Days 7 to 10", "Follow-ups", "One follow-up per silent thread, each adding a new specific observation, never bumping this. Rotate to the next influencer (Taylor, then Lauren at DataSnipper; Sarah at Xelix) only after the follow-up also goes silent."],
+                    ["Days 10 to 14", "Escalate or hold", "Escalate to Jamie Ryan or Paris Haig only where a champion or influencer has confirmed the pain. The escalation message references the discovery conversation by name. No confirmation, no buyer touch; hold and re-enter through the connector route instead."],
+                  ]}
+                />
+              </StrategyBlock>
+            </div>
+            <div className="mt-4 grid gap-4 lg:grid-cols-3">
+              <StrategyBlock
+                eyebrow="Validation"
+                title="What validated pain means"
+                body="A champion or influencer confirms at least one of: account prep is manual, expansion signals are spotted by individual judgment, renewal context lives in scattered notes, or there is no systematic whitespace view."
+              />
+              <StrategyBlock
+                eyebrow="Sprint Metric"
+                title="Success metric for the sprint"
+                body="Two discovery calls booked from nine first-touches, and one warm buyer path opened (intro requested or escalation sent with a named reference). Below that, the hypothesis or the messaging is wrong; revisit triggers before sending more volume."
+              />
+              <StrategyBlock
+                eyebrow="Messaging"
+                title="Message rules"
+                bullets={[
+                  "The swap test: if the message still works with a different name and company, it does not get sent.",
+                  "One verified trigger per message: a funding event, a post, a hire, an acquisition. Assumptions are for the hypothesis, not the message.",
+                  "Speak Alphard's language where it earns its place: book, plays, expansion signals, NRR. It shows the homework without saying I did my homework.",
+                ]}
+              />
             </div>
           </SlidePage>
         ) : null}
