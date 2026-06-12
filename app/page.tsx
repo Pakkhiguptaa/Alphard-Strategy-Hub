@@ -1375,7 +1375,7 @@ export default function Home() {
                 bullets={[
                   "The swap test: if the message still works with a different name and company, it does not get sent.",
                   "One verified trigger per message: a funding event, a post, a hire, an acquisition. Assumptions are for the hypothesis, not the message.",
-                  "Speak Alphard's language where it earns its place: book, plays, expansion signals, NRR. It shows the homework without saying I did my homework.",
+                  "Speak Alphard's language: Expansion signals, revenue growth.",
                 ]}
               />
             </div>
