@@ -1184,7 +1184,7 @@ export default function Home() {
                   ["01", "B2B SaaS", "100 to 600 employees."],
                   ["02", "Large customer portfolio", "Expansion signals outnumber the team's capacity to spot them."],
                   ["03", "Named CS or AM org", "Dedicated leadership proves the budget line exists."],
-                  ["04", "Recent forcing event", "Funding round, new vertical push, or NRR pressure."],
+                  ["04", "Recent forcing event", "Funding round, new vertical push, or revenue growth pressure."],
                   ["05", "London or EU base", "Warm event routes are realistic."],
                 ]}
               />
