@@ -222,7 +222,7 @@ const companies: Company[] = [
     committedPlay: {
       eyebrow: "The Play",
       title: "Messaging attack",
-      body: "This account runs on cold outreach. The pain is visible, the champion path is clear, and there is no confirmed DataSnipper-hosted London motion worth waiting for. The events attack is dropped as a primary path: DigiGov Expo is a public sector audience and wrong for this account. Big Data LDN stays as an opportunistic add-on only if outreach has already opened a thread.",
+      body: "This account runs on cold outreach. The pain is visible, the champion path is clear, and there is no confirmed DataSnipper-hosted London motion worth waiting for. Big Data LDN stays as an opportunistic add-on only if outreach has already opened a thread.",
       sequence:
         "Channalyn first, Dirk as the parallel influencer, escalate to Jamie Ryan only after one of them confirms how account prep is actually done today.",
       messages: [
